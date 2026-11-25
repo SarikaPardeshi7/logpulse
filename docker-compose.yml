@@ -1,0 +1,20 @@
+services:
+  kafka:
+    image: apache/kafka:3.9.0
+    container_name: logpulse-kafka
+    ports:
+      - "9092:9092"
+
+  mysql:
+    image: mysql:8.4
+    container_name: logpulse-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logpulse
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
